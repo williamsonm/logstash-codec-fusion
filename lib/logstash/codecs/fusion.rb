@@ -3,6 +3,7 @@ require "logstash/codecs/base"
 require "logstash/util/charset"
 require "logstash/util/buftok"
 require "logstash/json"
+require 'json'
 
 class LogStash::Codecs::Fusion < LogStash::Codecs::Base
   config_name "fusion"
@@ -15,11 +16,20 @@ class LogStash::Codecs::Fusion < LogStash::Codecs::Base
   end
 
   def decode(data, &block)
-    parse(@converter.convert(line), &block)
+    parse(@converter.convert(data), &block)
   end
 
   def encode(event)
-    @on_event.call(event, event.to_json)
+    data = {
+      :commands => {
+        :name => "add",
+        :params => {}
+      },
+      :fields => event,
+      :id => event.get("id"),
+      :metadata => {}
+    }
+    @on_event.call(event, data.to_json)
   end
 
   private
