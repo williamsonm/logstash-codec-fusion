@@ -31,7 +31,6 @@ class LogStash::Codecs::Fusion < LogStash::Codecs::Base
       :id => event.get("id"),
       :metadata => {}
     }
-    puts data.to_json
     @on_event.call(event, data.to_json)
   end
 
