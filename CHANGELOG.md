@@ -10,10 +10,10 @@
 # 2.1.2
   - New dependency requirements for logstash-core for the 5.0 release
 ## 2.1.0
- - Backward compatible support for `Event#from_json` method https://github.com/logstash-plugins/logstash-codec-json_lines/pull/19
+ - Backward compatible support for `Event#from_json` method https://github.com/logstash-plugins/logstash-codec-fusion/pull/19
 
 ## 2.0.5
- - Directly use buftok to avoid indirection through the line codec https://github.com/logstash-plugins/logstash-codec-json_lines/pull/18
+ - Directly use buftok to avoid indirection through the line codec https://github.com/logstash-plugins/logstash-codec-fusion/pull/18
 
 ## 2.0.4
  - Support for customizable delimiter
