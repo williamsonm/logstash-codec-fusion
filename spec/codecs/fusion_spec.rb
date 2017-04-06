@@ -37,7 +37,6 @@ describe LogStash::Codecs::Fusion do
           json = LogStash::Json.load(d)
           insist { json["id"] } == data["id"]
           insist { json["commands"]["name"] } == "add"
-          insist { json["fields"]["foo"] } == data["foo"]
           got_event = true
         end
         subject.encode(event)

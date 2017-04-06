@@ -20,15 +20,18 @@ class LogStash::Codecs::Fusion < LogStash::Codecs::Base
   end
 
   def encode(event)
+    noid = event.to_hash.delete_if { |k,_| k.to_s == "id" }
+    fields = noid.map { |k,v| { "name" => k, "value" => v }}
     data = {
       :commands => {
         :name => "add",
         :params => {}
       },
-      :fields => event,
+      :fields => fields,
       :id => event.get("id"),
       :metadata => {}
     }
+    puts data.to_json
     @on_event.call(event, data.to_json)
   end
 
