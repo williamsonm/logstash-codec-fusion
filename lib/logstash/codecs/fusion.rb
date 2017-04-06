@@ -23,10 +23,10 @@ class LogStash::Codecs::Fusion < LogStash::Codecs::Base
     noid = event.to_hash.delete_if { |k,_| k.to_s == "id" }
     fields = noid.map { |k,v| { "name" => k, "value" => v }}
     data = {
-      :commands => {
+      :commands => [{
         :name => "add",
         :params => {}
-      },
+      }],
       :fields => fields,
       :id => event.get("id"),
       :metadata => {}

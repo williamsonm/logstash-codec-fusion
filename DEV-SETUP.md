@@ -14,6 +14,12 @@ bundle install
 
 # run tests
 bundle exec rspec
+
+# build
+gem build logstash-codec-fusion
+
+# install plugin
+logstash-plugin install ./logstash-codec-fusion-1.0.0.gem
 ```
 
 ## Character Encoding Issues on Linux
